@@ -15,8 +15,8 @@ import sys, os, arcpy
 
 #setting imports variables
 # Set input variables (Hard-wired)
-inputFile = 'V:/ARGOSTracking/Data/ARGOSData/1997dg.txt'
-outputFC = "V:/ARGOSTracking/Scratch/ARGOStrack.shp"
+inputFile = 'V:/Lessons/ARGOSTracking/Data/ARGOSData/1997dg.txt'
+outputFC = "V:/Lessons/ARGOSTracking/Scratch/ARGOStrack.shp"
 
 #%% Construct a while loop to iterate through all lines in the datafile
 # Open the ARGOS data file for reading
@@ -24,8 +24,6 @@ inputFileObj = open(inputFile,'r')
 
 # Get the first line of data, so we can use a while loop
 lineString = inputFileObj.readline()
-
-# Start the while loop
 while lineString:
     
     # Set code to run only if the line contains the string "Date: "
@@ -36,6 +34,9 @@ while lineString:
         
         # Extract attributes from the datum header line
         tagID = lineData[0]
+        obsDate = lineData[3]
+        obsTime = lineData[4]
+        obsLC = lineData[7]
         
         # Extract location info from the next line
         line2String = inputFileObj.readline()
